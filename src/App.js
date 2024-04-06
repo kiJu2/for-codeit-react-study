@@ -6,8 +6,6 @@ import Modal from "./components/modal";
 
 function App() {
   const [cards, setCards] = useState([]);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [modalContent, setModalContent] = useState("");
 
   const { openModal, closeModal, isModalOpen, modalContent } = useModal();
 
@@ -18,26 +16,6 @@ function App() {
         setCards(data.products);
       });
   }, []);
-
-  // const handleCardClick = (description) => {
-  //   console.log("Run handleCardClick");
-  //   setModalContent(description);
-  //   setIsModalOpen(true);
-  // };
-  // const handleCardClick = useCallback((description) => {
-  // console.log('Run handleCardClick');
-  //   setModalContent(description);
-  //   setIsModalOpen(true);
-  // }, []);
-
-  // const handleCloseModal = () => {
-  //   console.log("Run CloseModal");
-  //   setIsModalOpen(false);
-  // };
-  // const handleCloseModal = useCallback(() => {
-  // console.log('Run CloseModal');
-  //   setIsModalOpen(false);
-  // }, []);
 
   return (
     <>
