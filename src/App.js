@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <div className="container">
-        <h1>카드 리스트</h1>
+        <h1>코드잇/주강사 보충수업: 리액트로 만들어 보는 카드리스트</h1>
         <div className="card-section">
           {cards.map(({ title, description, thumbnail, id }) => {
             return (
