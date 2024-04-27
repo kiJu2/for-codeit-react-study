@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import useModal from "./hooks/use-modal";
 import Modal from "./components/modal";
 
-function App() {
+function useCards() {
   const [cards, setCards] = useState([]);
 
-  const { openModal, closeModal, isModalOpen, modalContent } = useModal();
+  function deleteCard(id) {
+    setCards(cards.filter((card) => card.id !== id));
+  }
 
   useEffect(() => {
     fetch("https://dummyjson.com/products")
@@ -16,6 +18,12 @@ function App() {
         setCards(data.products);
       });
   }, []);
+  return { cards, deleteCard };
+}
+
+function App() {
+  const { openModal, closeModal, isModalOpen, modalContent } = useModal();
+  const { cards, deleteCard } = useCards();
 
   return (
     <>
