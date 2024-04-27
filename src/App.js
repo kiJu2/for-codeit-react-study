@@ -3,23 +3,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import useModal from "./hooks/use-modal";
 import Modal from "./components/modal";
-
-function useCards() {
-  const [cards, setCards] = useState([]);
-
-  function deleteCard(id) {
-    setCards(cards.filter((card) => card.id !== id));
-  }
-
-  useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setCards(data.products);
-      });
-  }, []);
-  return { cards, deleteCard };
-}
+import useCards from "./hooks/use-cards";
 
 function App() {
   const { openModal, closeModal, isModalOpen, modalContent } = useModal();
