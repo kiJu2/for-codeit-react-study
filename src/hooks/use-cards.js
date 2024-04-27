@@ -14,5 +14,6 @@ export default function useCards() {
         setCards(data.products);
       });
   }, []);
+
   return { cards, deleteCard };
 }
