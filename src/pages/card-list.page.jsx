@@ -11,7 +11,7 @@ function CardListPage() {
   const { toast } = useToast();
 
   function handleDeleteCard(id) {
-    toast("카드를 삭제했습니다.");
+    toast(`${id} 카드를 삭제했습니다.`);
     deleteCard(id);
   }
 
@@ -28,7 +28,10 @@ function CardListPage() {
                 description={description}
                 onClick={openModal}
                 thumbnail={thumbnail}
-                onClickDelete={() => handleDeleteCard(id)}
+                onClickDelete={(e) => {
+                  e.stopPropagation();
+                  handleDeleteCard(id);
+                }}
               />
             );
           })}

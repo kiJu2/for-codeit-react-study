@@ -12,11 +12,15 @@ export function ToastProvider({ children }) {
   }
 
   function removeToast(id) {
-    setMessages(messages.filter((t) => t.id !== id));
+    // 클로저 이슈로 인해 setMessages를 사용하여 이전 상태를 가져와서 처리
+    setMessages((currentMessages) =>
+      currentMessages.filter((t) => t.id !== id)
+    );
   }
 
   function toast(message, time = 3000) {
     const toastId = pushToast(message);
+    console.log("$$ setTimeout", messages, toastId);
     setTimeout(() => {
       removeToast(toastId);
     }, time);
